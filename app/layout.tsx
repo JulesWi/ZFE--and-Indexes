@@ -1,10 +1,21 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import "./globals.css"
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+})
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+})
 
 export const metadata: Metadata = {
   title: "Zone à Faibles Émissions - Grenoble Métropole",
@@ -18,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr" className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}>
+    <html lang="fr" className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
       <body className="font-sans">
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
